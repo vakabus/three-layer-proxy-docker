@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:3.2
+FROM alpine:3.2
 MAINTAINER mhiro2 <clover.jd@gmail.com>
 
 ENV ZIPROXY_VERSION ziproxy-3.3.1
@@ -29,7 +29,8 @@ RUN apk --update add g++ make jasper-dev cyrus-sasl-dev giflib-dev jpeg-dev libp
  && make install \
  && cd /tmp \
  && rm -rf ziproxy* \
- && apk del gcc g++ make libpng-dev jpeg-dev giflib-dev cyrus-sasl-dev jasper-dev
+ && apk del gcc g++ make libpng-dev jpeg-dev giflib-dev cyrus-sasl-dev jasper-dev \
+ && rm -rf /var/cache/apk/* \
 
 # supervisor
 COPY supervisor.conf /etc/supervisor.d/supervisor.ini
