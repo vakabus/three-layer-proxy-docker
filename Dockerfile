@@ -30,9 +30,9 @@ RUN apk --update add g++ make jasper-dev cyrus-sasl-dev giflib-dev jpeg-dev libp
  && cd /tmp \
  && rm -rf ziproxy* \
  && apk del gcc g++ make libpng-dev jpeg-dev giflib-dev cyrus-sasl-dev jasper-dev \
- && rm -rf /var/cache/apk/* \
+ && rm -rf /var/cache/apk/*
 
 # supervisor
-COPY supervisor.conf /etc/supervisor.d/supervisor.ini
+COPY supervisor.conf /etc/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
