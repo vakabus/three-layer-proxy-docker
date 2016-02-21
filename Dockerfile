@@ -36,4 +36,4 @@ COPY squid/squid.conf /etc/squid/squid.conf
 # supervisor
 COPY supervisor.conf /etc/supervisord.conf
 
-CMD /usr/local/bin/ziproxy -d && /usr/bin/supervisord -c /etc/supervisord.conf
+CMD /usr/bin/supervisord -c /etc/supervisord.conf
