@@ -14,7 +14,7 @@ Usage
 ---
 ~~~
 $ docker pull mhiro2/three-layer-proxy
-$ docker run -p 3128 mhiro2/three-layer-proxy
+$ docker run -p 3128:3128 mhiro2/three-layer-proxy
 ~~~
 
 Reference
