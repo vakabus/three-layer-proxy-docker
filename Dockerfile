@@ -4,10 +4,6 @@ MAINTAINER mhiro2 <clover.jd@gmail.com>
 ENV ZIPROXY_VERSION ziproxy-3.3.1
 ENV SQUID_CACHE_DIR /var/spool/squid
 
-COPY privoxy/config /etc/privoxy/config
-COPY ziproxy/ziproxy.conf /etc/ziproxy/ziproxy.conf
-COPY squid/squid.conf /etc/squid/squid.conf
-
 # packages
 RUN apk --update add privoxy squid libjpeg libpng libjasper zlib-dev libsasl giflib supervisor \
  && rm -rf /var/cache/apk/* \
@@ -31,6 +27,11 @@ RUN apk --update add g++ make jasper-dev cyrus-sasl-dev giflib-dev jpeg-dev libp
  && rm -rf ziproxy* \
  && apk del gcc g++ make libpng-dev jpeg-dev giflib-dev cyrus-sasl-dev jasper-dev \
  && rm -rf /var/cache/apk/*
+
+# Config files
+COPY privoxy/config /etc/privoxy/config
+COPY ziproxy/ziproxy.conf /etc/ziproxy/ziproxy.conf
+COPY squid/squid.conf /etc/squid/squid.conf
 
 # supervisor
 COPY supervisor.conf /etc/supervisord.conf
