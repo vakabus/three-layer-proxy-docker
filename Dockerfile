@@ -35,4 +35,4 @@ RUN apk --update add g++ make jasper-dev cyrus-sasl-dev giflib-dev jpeg-dev libp
 # supervisor
 COPY supervisor.conf /etc/supervisord.conf
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+CMD /usr/local/bin/ziproxy -d && /usr/bin/supervisord -c /etc/supervisord.conf
