@@ -28,6 +28,9 @@ RUN apk --update add g++ make jasper-dev cyrus-sasl-dev giflib-dev jpeg-dev libp
  && apk del gcc g++ make libpng-dev jpeg-dev giflib-dev cyrus-sasl-dev jasper-dev \
  && rm -rf /var/cache/apk/*
 
+#Install blocking hosts file
+RUN wget -O /etc/squid/hosts http://winhelp2002.mvps.org/hosts.txt
+
 # Config files
 COPY privoxy/config /etc/privoxy/config
 COPY ziproxy/ziproxy.conf /etc/ziproxy/ziproxy.conf
